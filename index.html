@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>APICTA 2026 Jakarta | Smart Registration Platform</title>
+    <!-- Modern Font: Outfit + fallback -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="app-container">
+    <!-- SIDEBAR - collapsible -->
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-brand">
+            <!-- Official APICTA Logo placed here -->
+            <div class="brand-logo">
+                <img src="https://apicta.org/wp-content/uploads/2024/09/apicta-logo.webp" 
+                     alt="APICTA Official Logo" 
+                     class="apicta-logo"
+                     style="max-width: 48px; max-height: 48px; width: auto; height: auto; object-fit: contain;"
+                     onerror="this.onerror=null; this.src='https://via.placeholder.com/48?text=APICTA';">
+            </div>
+            
+            <div class="brand-text">
+                <span class="brand-title">APICTA 2026</span>
+                <span class="brand-sub">Jakarta · Indonesia</span>
+            </div>
+            <button class="collapse-btn" id="collapseToggle" aria-label="Collapse menu">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+        </div>
+        <div class="sidebar-nav">
+            <a href="#" class="nav-link active" data-panel="excoPanel"><i class="fas fa-globe-asia"></i><span>EXCO Registration</span></a>
+            <a href="#" class="nav-link" data-panel="juryPanel"><i class="fas fa-gavel"></i><span>Jury Registration</span></a>
+            <a href="#" class="nav-link" data-panel="officialPanel"><i class="fas fa-passport"></i><span>Official Registration</span></a>
+            <a href="#" class="nav-link" data-panel="participantPanel"><i class="fas fa-laptop-code"></i><span>Participant Registration</span></a>
+            <!-- EC Committee with proper icon -->
+            <a href="#" class="nav-link" data-panel="ecPanel"><i class="fas fa-calendar-alt"></i><span>EC Committee</span></a>
+            <a href="#" class="nav-link" data-panel="execDashboard"><i class="fas fa-chart-line"></i><span>Executive Dashboard</span></a>
+            <!-- Operational Dashboard with proper icon -->
+            <a href="#" class="nav-link" data-panel="opsDashboard"><i class="fas fa-chart-pie"></i><span>Operational Dashboard</span></a>
+            <a href="#" class="nav-link" data-panel="registrationsPanel"><i class="fas fa-clipboard-user"></i><span>Registrations</span></a>
+            <a href="#" class="nav-link" data-panel="qrAccreditation"><i class="fas fa-qrcode"></i><span>Accreditation & QR</span></a>
+        </div>
+        <div class="sidebar-footer">
+            <div class="ai-badge"><i class="fas fa-robot"></i> <span>AI-enhanced</span></div>
+        </div>
+    </aside>
+
+    <!-- MAIN CONTENT (same as before, all panels included) -->
+    <main class="main-content">
+        <header class="top-bar">
+            <div class="header-title">
+                <h1><i class="fas fa-trophy" style="color: #48b07b;"></i> APICTA 2026 Registration & Competition Management</h1>
+                <div class="chip-host"><i class="fas fa-flag-checkered"></i> Indonesia Host Edition · Smart EventTech</div>
+            </div>
+            <div class="header-meta">
+                <span class="live-badge"><i class="fas fa-circle"></i> Live Platform</span>
+            </div>
+        </header>
+
+        <div class="panels-wrapper" id="panelsWrapper">
+            <!-- EXCO PANEL -->
+            <div id="excoPanel" class="panel active-panel">
+                <div class="form-card glass-card">
+                    <div class="card-header"><i class="fas fa-user-tie"></i> EXCO Registration – Executive Committee</div>
+                    <p class="card-sub">Official representatives from APICTA member countries</p>
+                    <form id="excoForm">
+                        <div class="form-row">
+                            <div class="input-group"><label><i class="fas fa-user"></i> Full Name *</label><input type="text" name="full_name" placeholder="e.g. Dr. Surya Wijaya" required></div>
+                            <div class="input-group"><label><i class="fas fa-map-marker-alt"></i> Country *</label><select name="country"><option>Indonesia</option><option>Malaysia</option><option>Singapore</option><option>Thailand</option><option>Vietnam</option><option>Australia</option><option>Japan</option><option>Others</option></select></div>
+                            <div class="input-group"><label><i class="fas fa-building"></i> Organization</label><input type="text" name="organization" placeholder="Institution / Company"></div>
+                            <div class="input-group"><label><i class="fas fa-briefcase"></i> Position</label><input type="text" name="position" placeholder="Chair, EXCO Member"></div>
+                            <div class="input-group"><label><i class="fas fa-envelope"></i> Email *</label><input type="email" name="email" placeholder="contact@domain.com" required></div>
+                            <div class="input-group"><label><i class="fas fa-passport"></i> Passport/ID Number</label><input type="text" name="passport_or_id"></div>
+                            <div class="input-group"><label><i class="fas fa-calendar-alt"></i> Arrival Date</label><input type="date" name="arrival_date"></div>
+                            <div class="input-group full-width"><label><i class="fas fa-comment-dots"></i> Special Requests</label><textarea rows="2" name="special_requests" placeholder="Dietary, accessibility, etc."></textarea></div>
+                        </div>
+                        <button type="submit" class="btn-primary"><i class="fas fa-paper-plane"></i> Register EXCO Delegate</button>
+                    </form>
+                </div>
+            </div>
+            <!-- JURY PANEL -->
+            <div id="juryPanel" class="panel">
+                <div class="form-card glass-card"><div class="card-header"><i class="fas fa-gavel"></i> International Jury & Judges</div>
+                    <form id="juryForm"><div class="form-row">
+                        <div class="input-group"><label>Full Name *</label><input type="text" name="full_name" required></div>
+                        <div class="input-group"><label>Email *</label><input type="email" name="email" required></div>
+                        <div class="input-group"><label>Country</label><input type="text" name="country"></div>
+                        <div class="input-group"><label>Expertise (multi)</label><select name="expertise" multiple size="3"><option>AI/ML</option><option>Software Engineering</option><option>Hardware/IoT</option><option>Cybersecurity</option><option>Digital Media</option></select></div>
+                        <div class="checkbox-group"><label><input type="checkbox" name="conflict_of_interest" value="yes"> Conflict of Interest Declaration</label></div>
+                        <div class="checkbox-group"><label><input type="checkbox" name="nda_agreement" value="yes"> Agree to NDA & Scoring Ethics</label></div>
+                        <div class="input-group"><label>Availability Window</label><input name="availability_window" placeholder="Nov 10-15, 2026"></div>
+                    </div><button type="submit" class="btn-primary"><i class="fas fa-balance-scale"></i> Register as Judge</button></form>
+                </div>
+            </div>
+            <!-- OFFICIAL PANEL -->
+            <div id="officialPanel" class="panel"><div class="form-card glass-card"><div class="card-header"><i class="fas fa-id-card"></i> Official Delegation Registration</div>
+                <form id="officialForm"><div class="form-row">
+                    <div class="input-group"><label>Full Name *</label><input type="text" name="full_name" required></div>
+                    <div class="input-group"><label>Country *</label><input type="text" name="country"></div>
+                    <div class="input-group"><label>Delegation Name</label><input type="text" name="delegation_name"></div>
+                    <div class="input-group"><label>Role *</label><select name="role"><option>Country Official</option><option>Liaison Officer</option><option>Media Official</option><option>Technical Official</option></select></div>
+                    <div class="input-group"><label>Email *</label><input type="email" name="email" required></div>
+                    <div class="input-group"><label>Phone (WhatsApp)</label><input type="text" name="phone_whatsapp"></div>
+                </div><button type="submit" class="btn-primary"><i class="fas fa-user-check"></i> Register Official</button></form>
+            </div></div>
+            <!-- PARTICIPANT PANEL -->
+            <div id="participantPanel" class="panel"><div class="form-card glass-card"><div class="card-header"><i class="fas fa-users"></i> Competition Participant & Team</div>
+                <form id="participantForm" enctype="multipart/form-data"><div class="form-row">
+                    <div class="input-group"><label>Team Name *</label><input type="text" name="team_name" required></div>
+                    <div class="input-group"><label>Project Title *</label><input type="text" name="project_title" required></div>
+                    <div class="input-group"><label>Country</label><input type="text" name="country"></div>
+                    <div class="input-group"><label>Category</label><select name="category"><option>Business Services</option><option>Consumer Solutions</option><option>Industrial</option><option>Startup</option><option>AI & Data Science</option></select></div>
+                    <div class="input-group full-width"><label>Team Members (names & emails)</label><textarea rows="2" name="team_members"></textarea></div>
+                    <div class="input-group"><label>Executive Summary (PDF)</label><input type="file" name="executive_summary" accept=".pdf"></div>
+                    <div class="input-group"><label>Pitch Deck</label><input type="file" name="pitch_deck"></div>
+                    <div class="input-group"><label>Demo Video URL</label><input type="url" name="demo_video_url" placeholder="https://..."></div>
+                    <div class="checkbox-group"><label><input type="checkbox" name="ip_declaration" value="yes" required> IP Declaration & ownership</label></div>
+                </div><button type="submit" class="btn-primary"><i class="fas fa-rocket"></i> Submit Project</button></form>
+            </div></div>
+            <!-- EC COMMITTEE PANEL (icon fixed) -->
+            <div id="ecPanel" class="panel"><div class="form-card glass-card"><div class="card-header"><i class="fas fa-calendar-alt"></i> Event Committee (Indonesia OC)</div>
+                <form id="ecForm"><div class="form-row">
+                    <div class="input-group"><label>Full Name *</label><input type="text" name="full_name" required></div>
+                    <div class="input-group"><label>Email *</label><input type="email" name="email" required></div>
+                    <div class="input-group"><label>Division *</label><select name="division"><option>Secretariat</option><option>Technical</option><option>Competition</option><option>Protocol</option><option>Hospitality</option><option>Media</option><option>Security</option><option>Venue</option><option>Transportation</option></select></div>
+                    <div class="input-group"><label>Task Responsibility</label><input name="task_responsibility" placeholder="Lead coordinator"></div>
+                    <div class="input-group"><label>Access Level</label><select name="access_level"><option>Standard</option><option>Restricted Ops</option><option>Full Admin</option></select></div>
+                </div><button type="submit" class="btn-primary"><i class="fas fa-user-plus"></i> Register Committee</button></form>
+            </div></div>
+            <!-- EXECUTIVE DASHBOARD -->
+            <div id="execDashboard" class="panel"><div class="dashboard-grid">
+                <div class="stat-card"><div class="stat-value">21</div><div class="stat-label">Participating Countries</div><i class="fas fa-globe-americas stat-icon"></i></div>
+                <div class="stat-card"><div class="stat-value">487</div><div class="stat-label">Total Participants</div><i class="fas fa-users stat-icon"></i></div>
+                <div class="stat-card"><div class="stat-value">124</div><div class="stat-label">Project Submissions</div><i class="fas fa-file-code stat-icon"></i></div>
+                <div class="stat-card"><div class="stat-value">48</div><div class="stat-label">International Judges</div><i class="fas fa-gavel stat-icon"></i></div>
+            </div>
+            <div class="glass-card insight-card"><h3><i class="fas fa-chart-network"></i> Country participation map & real-time analytics</h3><div class="map-mock"><i class="fas fa-map"></i> APICTA 2026 Heatmap — active delegations: 16 countries live</div><div class="ai-insight">✨ AI prediction: 96% attendance rate</div></div></div>
+            <!-- OPERATIONAL DASHBOARD (icon consistent) -->
+            <div id="opsDashboard" class="panel"><div class="dashboard-grid">
+                <div class="stat-card warn"><div class="stat-value">23</div><div class="stat-label">Pending Approvals</div></div>
+                <div class="stat-card warn"><div class="stat-value">11</div><div class="stat-label">Missing Documents</div></div>
+                <div class="stat-card"><div class="stat-value">189</div><div class="stat-label">Arrivals Confirmed</div></div>
+                <div class="stat-card"><div class="stat-value">84%</div><div class="stat-label">Venue Utilization</div></div>
+            </div>
+            <div class="glass-card"><h3><i class="fas fa-clipboard-list"></i> Operational Workflow & Session Tracker</h3><ul class="task-list"><li><i class="fas fa-check-circle"></i> Main hall setup · Sessions 1-3 complete</li><li><i class="fas fa-exclamation-triangle"></i> Judge orientation pending (NDA missing)</li><li><i class="fas fa-qrcode"></i> QR batch generation in progress</li><li><i class="fas fa-bus"></i> Transportation schedule for Gala night</li></ul><button id="simulateSyncBtn" class="btn-secondary"><i class="fas fa-sync-alt"></i> Sync Verification (AI)</button></div></div>
+            <!-- REGISTRATIONS PANEL -->
+            <div id="registrationsPanel" class="panel">
+                <div class="registrations-grid">
+                    <div class="glass-card registrations-list-card">
+                        <div class="panel-header">
+                            <div>
+                                <h2><i class="fas fa-clipboard-user"></i> Recent registrations</h2>
+                                <p>Live records pulled from the Flask API.</p>
+                            </div>
+                            <button id="refreshRegistrationsBtn" class="btn-secondary" type="button"><i class="fas fa-rotate"></i> Refresh</button>
+                        </div>
+                        <div class="registrations-summary" id="registrationsSummary"></div>
+                        <div class="table-shell">
+                            <table class="registrations-table">
+                                <thead>
+                                    <tr>
+                                        <th>Reference</th>
+                                        <th>Name</th>
+                                        <th>Type</th>
+                                        <th>Status</th>
+                                        <th>Created</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="registrationsTableBody">
+                                    <tr><td colspan="5" class="empty-state">Loading registrations...</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="glass-card registration-detail-card">
+                        <div class="panel-header">
+                            <div>
+                                <h2><i class="fas fa-circle-info"></i> Registration detail</h2>
+                                <p>Inspect a submission without leaving the dashboard.</p>
+                            </div>
+                        </div>
+                        <div id="registrationDetail" class="registration-detail">
+                            <div class="empty-state detail-empty">Select a registration to inspect the payload and attachments.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- QR ACCREDITATION PANEL -->
+            <div id="qrAccreditation" class="panel"><div class="glass-card qr-center"><h2><i class="fas fa-qrcode" style="color:#48b07b"></i> Digital Accreditation & Smart Ecosystem</h2><p>Every registered user receives unique QR identity — venue access, meal validation, session check-in.</p><div id="qrcodeDynamic" class="qr-container"></div><div class="role-badge-demo"><span class="badge-green">Delegate Access</span> <span class="badge-blue">EXCO / Jury</span></div><button id="generateQRdemoBtn" class="btn-primary"><i class="fas fa-id-card"></i> Generate Sample QR Pass</button><p class="note"><i class="fas fa-shield-alt"></i> Role-based color coding integrated with APICTA 2026 security</p></div></div>
+        </div>
+    </main>
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
